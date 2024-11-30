@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', (e) => {
         localStorage.setItem('isLoggedIn', 'true');
 
         // Redireciona para a página inicial
-        window.location.href = 'https://sebrae-portfolio-hwrl.vercel.app/tabela_area/index.html';
+        window.location.href = '/tabela_area/tabela_area.html';
     } else {
         // Exibe o feedback na tela
         errorFeedback.classList.remove('d-none'); // Mostra o feedback
