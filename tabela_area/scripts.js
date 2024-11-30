@@ -1,3 +1,8 @@
+if (localStorage.getItem('isLoggedIn') !== 'true') {
+    // Redireciona para a página de login se não estiver autenticado
+    window.location.href = 'http://127.0.0.1:5500/index.html';
+}
+
 const dataUrl = './tabela_area.json';
 let tableData = [];
 let currentPage = 1;

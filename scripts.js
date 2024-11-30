@@ -10,6 +10,7 @@ togglePassword.addEventListener('click', () => {
 });
 
 // Lógica de login
+// Lógica de login
 const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -17,9 +18,13 @@ loginForm.addEventListener('submit', (e) => {
     const password = document.getElementById('password').value;
 
     // Credenciais de login
-    if (username === 'christini.gama@sebrae.com.br' && password === 'Manaus@123') {
+    if (username === 'sebrae.amazonas' && password === 'sebraeam@123') {
+        // Armazena o token de autenticação no localStorage
+        localStorage.setItem('isLoggedIn', 'true');
+
+        // Redireciona para a página inicial
         window.location.href = 'http://127.0.0.1:5500/tabela_area/index.html';
-    } else {
         alert('Usuário ou senha incorretos!');
     }
 });
+
