@@ -1,9 +1,12 @@
-// Toggle Sidebar
+(function redirectIfNotLoggedIn() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-if (localStorage.getItem('isLoggedIn') !== 'true') {
-    // Redireciona para a página de login se não estiver autenticado
-    window.location.href = 'http://127.0.0.1:5500/index.html';
-}
+    if (!isLoggedIn || isLoggedIn !== 'true') {
+        // Redireciona para a página de login
+        window.location.href = '../index.html';
+    }
+})();
+
 
 document.getElementById('toggleSidebar').addEventListener('click', () => {
     const sidebar = document.getElementById('sidebar');
