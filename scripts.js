@@ -17,7 +17,7 @@ loginForm.addEventListener('submit', (e) => {
     const password = document.getElementById('password').value;
 
     // Credenciais de login
-    if (username === 'sebrae.amazonas' && password === 'sebraeam@123') {
+    if (username === 'christini.gama@sebrae.com.br' && password === 'Manaus@123') {
         window.location.href = 'http://127.0.0.1:5500/tabela_area/index.html';
     } else {
         alert('Usuário ou senha incorretos!');
