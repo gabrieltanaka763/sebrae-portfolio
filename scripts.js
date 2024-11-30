@@ -22,7 +22,7 @@ loginForm.addEventListener('submit', (e) => {
         localStorage.setItem('isLoggedIn', 'true');
 
         // Redireciona para a página inicial
-        window.location.href = 'tabela_area/index.html';
+        window.location.href = 'https://sebrae-portfolio-hwrl.vercel.app/tabela_area/index.html';
     } else {
         // Exibe mensagem de erro apenas se as credenciais estiverem erradas
         alert('Usuário ou senha incorretos!');
