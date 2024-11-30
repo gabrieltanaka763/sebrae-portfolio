@@ -11,6 +11,8 @@ togglePassword.addEventListener('click', () => {
 
 // Lógica de login
 const loginForm = document.getElementById('loginForm');
+const errorFeedback = document.getElementById('errorFeedback'); // Seleciona o elemento de feedback
+
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
@@ -24,7 +26,13 @@ loginForm.addEventListener('submit', (e) => {
         // Redireciona para a página inicial
         window.location.href = 'https://sebrae-portfolio-hwrl.vercel.app/tabela_area/index.html';
     } else {
-        // Exibe mensagem de erro apenas se as credenciais estiverem erradas
-        alert('Usuário ou senha incorretos!');
+        // Exibe o feedback na tela
+        errorFeedback.classList.remove('d-none'); // Mostra o feedback
+        errorFeedback.style.display = 'block'; // Garante que o elemento esteja visível
+
+        // Esconde o feedback após 3 segundos
+        setTimeout(() => {
+            errorFeedback.classList.add('d-none'); // Esconde o feedback
+        }, 3000);
     }
 });
