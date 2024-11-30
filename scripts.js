@@ -22,7 +22,7 @@ loginForm.addEventListener('submit', (e) => {
         localStorage.setItem('isLoggedIn', 'true');
 
         // Redireciona para a página inicial
-        window.location.href = 'http://127.0.0.1:5500/tabela_area/index.html';
+        window.location.href = 'tabela_area/index.html';
     } else {
         // Exibe mensagem de erro apenas se as credenciais estiverem erradas
         alert('Usuário ou senha incorretos!');
