@@ -131,7 +131,7 @@ function initializeDashboard() {
     const subAreaData = processData('PRODUTO');
     const naturezaData = processData('NATUREZA DA PRESTAÇÃO DE SERVIÇO');
     const formatoData = processData('FORMA DA PRESTAÇÃO DO SERVIÇO');
-    const portfolioData = processData('PORTFÓLIO');
+    const portfolioData = processData('NOME DO PORTFOLIO');
     const objetoData = processData('OBJETO DE CONTRATAÇÃO', 10);
 
     updateChart(chartArea, areaData.labels, areaData.values);
@@ -148,7 +148,7 @@ function populateFilters() {
         subArea: 'PRODUTO',
         natureza: 'NATUREZA DA PRESTAÇÃO DE SERVIÇO',
         formato: 'FORMA DA PRESTAÇÃO DO SERVIÇO',
-        portfolio: 'PORTFÓLIO',
+        portfolio: 'NOME DO PORTFOLIO',
         objeto: 'OBJETO DE CONTRATAÇÃO'
     };
 
@@ -179,7 +179,7 @@ function applyFilters() {
             (subAreaFilter === 'all' || item['PRODUTO'] === subAreaFilter) &&
             (naturezaFilter === 'all' || item['NATUREZA DA PRESTAÇÃO DE SERVIÇO'] === naturezaFilter) &&
             (formatoFilter === 'all' || item['FORMA DA PRESTAÇÃO DO SERVIÇO'] === formatoFilter) &&
-            (portfolioFilter === 'all' || item['PORTFÓLIO'] === portfolioFilter) &&
+            (portfolioFilter === 'all' || item['NOME DO PORTFOLIO'] === portfolioFilter) &&
             (objetoFilter === 'all' || item['OBJETO DE CONTRATAÇÃO'] === objetoFilter)
         );
     });
