@@ -263,5 +263,42 @@ document.getElementById('lastPage').addEventListener('click', () => {
     updatePaginationInfo();
 });
 
+// Adicionar evento ao botão de download
+// Adicionar evento ao botão de download
+document.getElementById('downloadBtn').addEventListener('click', () => {
+    exportToExcel(filteredData, 'tabela_area.xlsx');
+});
+
+// Função para exportar os dados como XLSX
+function exportToExcel(data, filename) {
+    if (!data || !data.length) {
+        alert('Nenhum dado para exportar.');
+        return;
+    }
+
+    // Cria um array de objetos representando as linhas da tabela
+    const headers = Object.keys(data[0]); // Obtém os cabeçalhos da tabela
+    const rows = data.map(row => headers.map(header => row[header] || ''));
+
+    // Inclui os cabeçalhos como a primeira linha
+    rows.unshift(headers);
+
+    // Cria a planilha XLSX
+    const worksheet = XLSX.utils.aoa_to_sheet(rows);
+    const workbook = XLSX.utils.book_new();
+
+    // Adiciona a planilha ao workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Tabela');
+
+    // Define formatação como tabela no Excel
+    const range = XLSX.utils.decode_range(worksheet['!ref']);
+    worksheet['!cols'] = headers.map(() => ({ width: 20 })); // Define largura das colunas
+    worksheet['!rows'] = rows.map(() => ({ hpt: 20 })); // Define altura das linhas
+
+    // Baixa o arquivo
+    XLSX.writeFile(workbook, filename);
+}
+
+
 // Carregar dados e inicializar
 loadData();
