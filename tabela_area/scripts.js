@@ -266,19 +266,39 @@ document.getElementById('lastPage').addEventListener('click', () => {
 // Adicionar evento ao botão de download
 // Adicionar evento ao botão de download
 document.getElementById('downloadBtn').addEventListener('click', async () => {
-    await exportToExcelWithCharts(filteredData, 'tabela_area.xlsx');
+    try {
+        if (!window.ExcelJS) {
+            await loadExcelJSLibrary(); // Garante que a biblioteca ExcelJS esteja carregada
+        }
+
+        if (!filteredData || !filteredData.length) {
+            alert('Nenhum dado disponível para exportar.');
+            return;
+        }
+
+        await exportToExcel(filteredData, 'tabela area.xlsx');
+    } catch (error) {
+        console.error('Erro ao tentar exportar os dados:', error);
+        alert('Erro ao tentar exportar os dados. Por favor, tente novamente.');
+    }
 });
 
-async function exportToExcelWithCharts(data, filename) {
-    if (!data || !data.length) {
-        alert('Nenhum dado para exportar.');
-        return;
+async function loadExcelJSLibrary() {
+    if (!window.ExcelJS) {
+        try {
+            await import('https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js');
+            console.log('Biblioteca ExcelJS carregada com sucesso.');
+        } catch (error) {
+            console.error('Erro ao carregar a biblioteca ExcelJS:', error);
+            alert('Erro ao carregar a biblioteca ExcelJS. Por favor, tente novamente.');
+            throw error;
+        }
     }
+}
 
+async function exportToExcel(data, filename) {
     try {
-        // Importa a biblioteca ExcelJS
-        const ExcelJS = window.ExcelJS || await import('https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js');
-
+        const ExcelJS = window.ExcelJS;
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('Tabela');
 
@@ -286,7 +306,7 @@ async function exportToExcelWithCharts(data, filename) {
         const headers = Object.keys(data[0]);
         const headerRow = worksheet.addRow(headers);
 
-        // Estilo para cabeçalhos
+        // Estilo dos cabeçalhos
         headerRow.eachCell(cell => {
             cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
             cell.fill = {
@@ -344,9 +364,10 @@ async function exportToExcelWithCharts(data, filename) {
         console.log('Arquivo gerado com sucesso!');
     } catch (error) {
         console.error('Erro ao exportar para Excel:', error);
-        alert('Ocorreu um erro ao gerar o arquivo Excel.');
+        throw error;
     }
 }
+
 
 // Carregar dados e inicializar
 loadData();
