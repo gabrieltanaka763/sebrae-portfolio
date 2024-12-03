@@ -265,40 +265,88 @@ document.getElementById('lastPage').addEventListener('click', () => {
 
 // Adicionar evento ao botão de download
 // Adicionar evento ao botão de download
-document.getElementById('downloadBtn').addEventListener('click', () => {
-    exportToExcel(filteredData, 'tabela_area.xlsx');
+document.getElementById('downloadBtn').addEventListener('click', async () => {
+    await exportToExcelWithCharts(filteredData, 'tabela_area.xlsx');
 });
 
-// Função para exportar os dados como XLSX
-function exportToExcel(data, filename) {
+async function exportToExcelWithCharts(data, filename) {
     if (!data || !data.length) {
         alert('Nenhum dado para exportar.');
         return;
     }
 
-    // Cria um array de objetos representando as linhas da tabela
-    const headers = Object.keys(data[0]); // Obtém os cabeçalhos da tabela
-    const rows = data.map(row => headers.map(header => row[header] || ''));
+    try {
+        // Importa a biblioteca ExcelJS
+        const ExcelJS = window.ExcelJS || await import('https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js');
 
-    // Inclui os cabeçalhos como a primeira linha
-    rows.unshift(headers);
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Tabela');
 
-    // Cria a planilha XLSX
-    const worksheet = XLSX.utils.aoa_to_sheet(rows);
-    const workbook = XLSX.utils.book_new();
+        // Adiciona os cabeçalhos
+        const headers = Object.keys(data[0]);
+        const headerRow = worksheet.addRow(headers);
 
-    // Adiciona a planilha ao workbook
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Tabela');
+        // Estilo para cabeçalhos
+        headerRow.eachCell(cell => {
+            cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+            cell.fill = {
+                type: 'pattern',
+                pattern: 'solid',
+                fgColor: { argb: 'FF4F81BD' },
+            };
+            cell.alignment = { horizontal: 'center' };
+        });
 
-    // Define formatação como tabela no Excel
-    const range = XLSX.utils.decode_range(worksheet['!ref']);
-    worksheet['!cols'] = headers.map(() => ({ width: 20 })); // Define largura das colunas
-    worksheet['!rows'] = rows.map(() => ({ hpt: 20 })); // Define altura das linhas
+        // Adiciona os dados
+        data.forEach(row => {
+            const rowValues = headers.map(header => row[header] || '');
+            worksheet.addRow(rowValues);
+        });
 
-    // Baixa o arquivo
-    XLSX.writeFile(workbook, filename);
+        // Estilo zebra para as linhas
+        worksheet.eachRow((row, rowNumber) => {
+            if (rowNumber > 1) {
+                row.eachCell(cell => {
+                    cell.fill = {
+                        type: 'pattern',
+                        pattern: 'solid',
+                        fgColor: {
+                            argb: rowNumber % 2 === 0 ? 'FFD9E1F2' : 'FFFFFFFF',
+                        },
+                    };
+                    cell.alignment = { horizontal: 'center' };
+                });
+            }
+        });
+
+        // Configura largura automática para as colunas
+        worksheet.columns.forEach(column => {
+            let maxLength = 0;
+            column.eachCell({ includeEmpty: true }, cell => {
+                const value = cell.value ? cell.value.toString() : '';
+                maxLength = Math.max(maxLength, value.length);
+            });
+            column.width = maxLength + 2;
+        });
+
+        // Salva o arquivo
+        const buffer = await workbook.xlsx.writeBuffer();
+        const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+        // Gera o download
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        console.log('Arquivo gerado com sucesso!');
+    } catch (error) {
+        console.error('Erro ao exportar para Excel:', error);
+        alert('Ocorreu um erro ao gerar o arquivo Excel.');
+    }
 }
-
 
 // Carregar dados e inicializar
 loadData();
