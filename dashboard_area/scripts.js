@@ -11,10 +11,34 @@
 document.getElementById('toggleSidebar').addEventListener('click', () => {
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
+
+    // Alterna as classes para expandir ou minimizar
     sidebar.classList.toggle('expanded');
     sidebar.classList.toggle('minimized');
     mainContent.classList.toggle('minimized');
+
+    // Salva o estado no localStorage
+    const isMinimized = sidebar.classList.contains('minimized');
+    localStorage.setItem('sidebarState', isMinimized ? 'minimized' : 'expanded');
 });
+
+// Aplica o estado salvo ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    const savedState = localStorage.getItem('sidebarState');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+
+    if (savedState === 'minimized') {
+        sidebar.classList.add('minimized');
+        sidebar.classList.remove('expanded');
+        mainContent.classList.add('minimized');
+    } else {
+        sidebar.classList.add('expanded');
+        sidebar.classList.remove('minimized');
+        mainContent.classList.remove('minimized');
+    }
+});
+
 
 // Configuração base para gráficos de barra (vertical)
 const barChartConfig = {
