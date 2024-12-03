@@ -40,95 +40,80 @@
         <div class="main-content content-background" id="mainContent">
 
             <h1 class="mb-4">Dashboard de Área</h1>
-            <!-- Filtros -->
-            <div class="filters d-flex flex-wrap justify-content-between mb-4">
-                <div class="form-group">
-                    <label for="filterArea">Área:</label>
-                    <select id="filterArea" class="form-select">
-                        <option value="all">Todas</option>
+            <section class="filters">
+                <div class="filter-group">
+                    <label for="area-filter">Área:</label>
+                    <select id="area-filter">
+                        <option value="">Todas</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="filterSubArea">Sub-área:</label>
-                    <select id="filterSubArea" class="form-select">
-                        <option value="all">Todas</option>
+                <div class="filter-group">
+                    <label for="subarea-filter">Subárea:</label>
+                    <select id="subarea-filter">
+                        <option value="">Todas</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="filterNatureza">Natureza:</label>
-                    <select id="filterNatureza" class="form-select">
-                        <option value="all">Todas</option>
+                <div class="filter-group">
+                    <label for="natureza-filter">Natureza:</label>
+                    <select id="natureza-filter">
+                        <option value="">Todas</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="filterFormato">Formato:</label>
-                    <select id="filterFormato" class="form-select">
-                        <option value="all">Todos</option>
+                <div class="filter-group">
+                    <label for="formato-filter">Formato:</label>
+                    <select id="formato-filter">
+                        <option value="">Todos</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="filterPortfolio">Portfólio:</label>
-                    <select id="filterPortfolio" class="form-select">
-                        <option value="all">Todos</option>
+                <div class="filter-group">
+                    <label for="portfolio-filter">Portfólio:</label>
+                    <select id="portfolio-filter">
+                        <option value="">Todos</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="filterObjeto">Objeto de Contratação:</label>
-                    <select id="filterObjeto" class="form-select">
-                        <option value="all">Todos</option>
-                    </select>
-                </div>
-                <button class="btn btn-outline-danger mt-4" id="clearFilters">Limpar Todos os Filtros</button>
-            </div>
+                <button id="clear-all-filters" class="clear-all-filters">Limpar Todos os Filtros</button>
+            </section>
 
             <!-- Gráficos -->
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="card p-3 dark-card">
-                        <h5 class="chart-title">Área</h5>
-                        <canvas id="chartArea"></canvas>
+            <section class="charts">
+                <!-- Primeira Linha: Área e Subárea -->
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h2 class="chart-title">Área</h2>
+                        <canvas id="chart-area"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h2 class="chart-title">Subárea</h2>
+                        <canvas id="chart-subarea"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card p-3 dark-card">
-                        <h5 class="chart-title">Sub-área</h5>
-                        <canvas id="chartSubArea"></canvas>
+            
+                <!-- Segunda Linha: Portfólio e Objeto de Contratação -->
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h2 class="chart-title">Portfólio</h2>
+                        <canvas id="chart-portfolio"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h2 class="chart-title">Objeto de Contratação</h2>
+                        <canvas id="chart-contratacao"></canvas>
                     </div>
                 </div>
-            </div>
-
-            <!-- Segunda linha: Gráfico de Portfólio e Objeto -->
-            <div class="row g-3 mt-3">
-                <div class="col-md-6">
-                    <div class="card p-3 dark-card">
-                        <h5 class="chart-title">Portfólio</h5>
-                        <canvas id="chartPortfolio"></canvas>
+            
+                <!-- Terceira Linha: Natureza e Formato -->
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h2 class="chart-title">Natureza</h2>
+                        <canvas id="chart-natureza"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h2 class="chart-title">Formato</h2>
+                        <canvas id="chart-formato"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card p-3 dark-card">
-                        <h5 class="chart-title">Objeto de Contratação</h5>
-                        <canvas id="chartObjeto"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Terceira linha: Gráficos de Natureza e Formato -->
-            <div class="row g-3 mt-3">
-                <div class="col-md-6">
-                    <div class="card p-3 dark-card">
-                        <h5 class="chart-title">Natureza</h5>
-                        <canvas id="chartNatureza"></canvas>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card p-3 dark-card">
-                        <h5 class="chart-title">Formato</h5>
-                        <canvas id="chartFormato"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </section>
+            
+        </main>
     </div>
 
     <!-- Bootstrap JS -->

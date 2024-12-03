@@ -94,7 +94,9 @@ h1 {
 }
 
 .card canvas {
-    max-height: 300px;
+    width: 300px; /* Largura do gráfico */
+    height: 300px; /* Altura do gráfico */
+    margin: 0 auto; /* Centraliza o gráfico */
 }
 .dark-card {
     background-color: #fff; /* Cor mais escura */
@@ -108,4 +110,138 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 15px;
+}
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.charts-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.chart-card {
+    flex: 1;
+    min-width: 400px;
+    max-height: 500px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-title {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    align-items: center; /* Alinhar verticalmente os itens */
+    justify-content: flex-start;
+    margin: 20px 0;
+    padding: 0; /* Remove o padding do contêiner */
+    background-color: transparent; /* Remove o fundo */
+    border-radius: 0; /* Remove bordas arredondadas */
+    box-shadow: none; /* Remove a sombra */
+}
+
+/* Estilo para os grupos de filtro */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #495057; /* Cor do texto */
+    margin-bottom: 5px;
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    color: #495057; /* Cor do texto */
+    border: 1px solid #ced4da; /* Cor da borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #ffffff; /* Fundo branco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: #80bdff; /* Cor de foco */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra de foco */
+}
+
+#clear-all-filters {
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #dc3545; /* Cor do texto */
+    border: 1px solid #dc3545; /* Borda vermelha */
+    border-radius: 5px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    height: 25px; /* Alinha o botão com os selects */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clear-all-filters:hover {
+    background-color: #dc3545; /* Fundo vermelho ao passar o mouse */
+    color: #ffffff; /* Texto branco */
+    border-color: #dc3545;
+}
+
+@media (max-width: 768px) {
+    .charts-row {
+        flex-direction: column;
+    }
+}
+
+.chart-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-title {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: bold;
 }
