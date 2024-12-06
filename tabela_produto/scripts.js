@@ -400,6 +400,13 @@ async function exportToExcel(data, filename) {
         throw error;
     }
 }
+document.querySelectorAll('.has-submenu').forEach(item => {
+    item.addEventListener('click', event => {
+        event.preventDefault();
+        const submenu = item.nextElementSibling;
+        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
 
 
 // Carregar dados e inicializar
