@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Produto</title>
-    <link rel="shortcut icon" href="sebrae.png">
+    <title>Dashboard de Comercio e Serviço</title>
+    <link rel="shortcut icon" href="../../sebrae.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="styles.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
 </head>
+
 <body>
     <div>
-        <!-- Sidebar -->
         <nav class="sidebar expanded" id="sidebar">
             <ul class="nav flex-column">
                 <li class="nav-item p-3 text-center">
@@ -41,97 +42,100 @@
                         <i class="fas fa-layer-group"></i><span>Portfólio</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="../portfolio/cidadeEmpreendedora/cidadeEmpreendedora.html">Tabela</a></li>
-                        <li><a href="../dashboard_portfolio/cidadeEmpreendedora/cidadeEmpreendedora.html">Dashboard</a></li>
+                        <li><a href="../tabela_sebraetec/index.html">Tabela</a></li>
+                        <li><a href="#">Dashboard</a></li>
                     </ul>
                 </li>
-             
+
             </ul>
         </nav>
-        
+
 
         <div class="main-content content-background" id="mainContent">
 
-            <h1 class="mb-4">Dashboard de Produto</h1>
+            <h1 class="mb-4">Dashboard Comercio e Serviço</h1>
+            <nav class="menu-opcoes">
+                <ul class="menu-list">
+                    <li class="menu-item"><a href="../../dashboard_portfolio/cidadeEmpreendedora/cidadeEmpreendedora.html">Cidade Empreendedora</a></li>
+                    <li class="menu-item active"><a href="../../dashboard_portfolio/comercio&Servico/comercio&Servico.html">Comércio e Serviço</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/economiaCriativa/economiaCriativa.html">Econômica Criativa</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/educaçãoEmpreendedora/educacaoEmpreendedora.html">Educação Empreendedora</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/energiaRenovavéis/energiaRenovaveis.html">Energia Renováveis</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/gestãoEmpresarial/gestaoEmpresarial.html">Gestão Empresarial</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/industria/industria.html">Indústria</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/inovação&Startup/inovacao&Startup.html">Inovação e Startup</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/offShore&OnShore/offshore&OnShore.html">OffShore e OnShore</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/poloDeLiderenca/poloDeLiderenca.html">Polo de Liderança</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/sebraetec/sebraetec.html">Sebraetec</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/sustentabilidade/sustentabilidade.html">Sustentabilidade</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/territóriosEmpreendedores/territoriosEmpreendedores.html">Territórios Empreendedores</a></li>
+                    <li class="menu-item"><a href="../../dashboard_portfolio/turismoDeExperiência/turismo.html">Turismo de Experiência</a></li>
+                </ul>
+            </nav>
             <section class="filters">
                 <div class="filter-group">
-                    <label for="area-filter">Área:</label>
+                    <label for="area-filter">Modalidade:</label>
                     <select id="area-filter">
                         <option value="">Todas</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label for="subarea-filter">Produto:</label>
+                    <label for="subarea-filter">Instrumento:</label>
                     <select id="subarea-filter">
                         <option value="">Todas</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label for="natureza-filter">Natureza:</label>
+                    <label for="natureza-filter">Temas:</label>
                     <select id="natureza-filter">
                         <option value="">Todas</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label for="formato-filter">Formato:</label>
+                    <label for="formato-filter">SubTemas:</label>
                     <select id="formato-filter">
                         <option value="">Todos</option>
                     </select>
                 </div>
-                <div class="filter-group">
-                    <label for="portfolio-filter">Portfólio:</label>
-                    <select id="portfolio-filter">
-                        <option value="">Todos</option>
-                    </select>
+                <div>
+                  
+                 
                 </div>
                 <button id="clear-all-filters" class="clear-all-filters">Limpar Todos os Filtros</button>
             </section>
 
-            <!-- Gráficos -->
             <section class="charts">
-                <!-- Primeira Linha: Área e Subárea -->
                 <div class="charts-row">
                     <div class="chart-card">
-                        <h2 class="chart-title">Área</h2>
+                        <h2 class="chart-title">Modalidade</h2>
                         <canvas id="chart-area"></canvas>
                     </div>
                     <div class="chart-card">
-                        <h2 class="chart-title">Produto</h2>
+                        <h2 class="chart-title">Instrumento</h2>
                         <canvas id="chart-subarea"></canvas>
                     </div>
                 </div>
-            
-                <!-- Segunda Linha: Portfólio e Objeto de Contratação -->
+
                 <div class="charts-row">
                     <div class="chart-card">
-                        <h2 class="chart-title">Portfólio</h2>
+                        <h2 class="chart-title">Temas</h2>
                         <canvas id="chart-portfolio"></canvas>
                     </div>
                     <div class="chart-card">
-                        <h2 class="chart-title">Objeto de Contratação</h2>
+                        <h2 class="chart-title">Subtemas</h2>
                         <canvas id="chart-contratacao"></canvas>
                     </div>
                 </div>
-            
-                <!-- Terceira Linha: Natureza e Formato -->
-                <div class="charts-row">
-                    <div class="chart-card">
-                        <h2 class="chart-title">Natureza</h2>
-                        <canvas id="chart-natureza"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h2 class="chart-title">Formato</h2>
-                        <canvas id="chart-formato"></canvas>
-                    </div>
-                </div>
-            </section>
-            
-        </main>
+
+        </div>
+    </div>
+    </section>
+
+    </main>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
     <script src="scripts.js" defer></script>
 </body>
+
 </html>
