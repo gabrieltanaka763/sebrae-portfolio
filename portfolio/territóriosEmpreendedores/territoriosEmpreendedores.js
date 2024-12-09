@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './cidadeEmpreendedora.json';
+const dataUrl = './Territorios_Empreendedores.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './cidadeEmpreendedora.json';
+const dataUrl = './Industria.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

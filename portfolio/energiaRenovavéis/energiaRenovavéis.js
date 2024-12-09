@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './cidadeEmpreendedora.json';
+const dataUrl = './Energia_Renovaveis.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

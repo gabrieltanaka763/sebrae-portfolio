@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './cidadeEmpreendedora.json';
+const dataUrl = './Inovacao_e_Startup.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;
