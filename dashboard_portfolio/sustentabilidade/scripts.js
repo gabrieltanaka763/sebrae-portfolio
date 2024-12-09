@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let charts = {};
 
         
-    fetch("cidadeEmpreendedora.json")
+    fetch("Sustentabilidade.json")
         .then(response => response.json())
         .then(data => {
             rawData = data;
