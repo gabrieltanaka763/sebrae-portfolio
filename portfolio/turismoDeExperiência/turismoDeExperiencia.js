@@ -305,7 +305,7 @@ document.getElementById('downloadBtn').addEventListener('click', async () => {
             return;
         }
 
-        await exportToExcel(filteredData, 'Sebraetec.xlsx');
+        await exportToExcel(filteredData, 'turismoDeExperiência.xlsx');
     } catch (error) {
         console.error('Erro ao tentar exportar os dados:', error);
         alert('Erro ao tentar exportar os dados. Por favor, tente novamente.');
