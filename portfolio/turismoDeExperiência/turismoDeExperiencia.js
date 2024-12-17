@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Turismo_de_Experiencia.json';
+const dataUrl = '../../files/Turismo_de_Experiencia.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

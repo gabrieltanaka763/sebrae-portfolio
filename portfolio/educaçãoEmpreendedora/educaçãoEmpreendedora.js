@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Educacao_Empreendedora.json';
+const dataUrl = '../../files/Educacao_Empreendedora.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

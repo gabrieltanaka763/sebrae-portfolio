@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Energia_Renovaveis.json';
+const dataUrl = '../../files/Energia_Renovaveis.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

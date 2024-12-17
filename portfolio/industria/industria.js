@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Industria.json';
+const dataUrl = '../../files/Industria.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

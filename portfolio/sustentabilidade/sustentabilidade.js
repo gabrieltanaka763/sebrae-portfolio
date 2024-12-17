@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Sustentabilidade.json';
+const dataUrl = '../../files/Sustentabilidade.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

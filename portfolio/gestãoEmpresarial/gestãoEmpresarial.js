@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Gestao_Empresarial.json';
+const dataUrl = '../../files/Gestao_Empresarial.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

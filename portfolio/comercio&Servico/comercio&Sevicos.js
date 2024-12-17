@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Comercio_e_Servicos.json';
+const dataUrl = '../../files/Comercio_e_Servicos.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

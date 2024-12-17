@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Sebraetec.json';
+const dataUrl = '../../files/Sebraetec.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

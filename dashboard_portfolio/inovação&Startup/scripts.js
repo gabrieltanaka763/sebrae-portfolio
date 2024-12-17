@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let charts = {};
 
         
-    fetch("Inovacao_e_Startup.json")
+    fetch("../../files/Inovacao_e_Startup.json")
         .then(response => response.json())
         .then(data => {
             rawData = data;

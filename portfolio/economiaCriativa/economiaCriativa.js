@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Economia_Criativa.json';
+const dataUrl = '../../files/Economia_Criativa.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

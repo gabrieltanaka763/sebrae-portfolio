@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Offshore_e_Onshore.json';
+const dataUrl = '../../files/Offshore_e_Onshore.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;

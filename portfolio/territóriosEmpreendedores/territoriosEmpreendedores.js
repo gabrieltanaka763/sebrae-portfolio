@@ -7,7 +7,7 @@
     }
 })();
 
-const dataUrl = './Territorios_Empreendedores.json';
+const dataUrl = '../../files/Territorios_Empreendedores.json';
 let tableData = [];
 let currentPage = 1;
 const itemsPerPage = 25;
