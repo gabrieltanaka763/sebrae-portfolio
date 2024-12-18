@@ -17,36 +17,47 @@ let selectedFilters = { area: [], subArea: [], portfolio: [] }; // Filtros selec
 let searchQuery = ""; // Consulta da barra de busca
 
 // Sidebar Toggle
-document.getElementById('toggleSidebar').addEventListener('click', () => {
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('mainContent');
+document.addEventListener("DOMContentLoaded", () => {
+    // Carregar o menu lateral
+    fetch("../../menu/menu.html")
+        .then(response => response.text())
+        .then(menuHtml => {
+            const menuContainer = document.createElement("div");
+            menuContainer.innerHTML = menuHtml;
+            document.body.insertBefore(menuContainer.firstElementChild, document.body.firstChild);
 
-    // Alterna as classes para expandir ou minimizar
-    sidebar.classList.toggle('expanded');
-    sidebar.classList.toggle('minimized');
-    mainContent.classList.toggle('minimized');
-
-    // Salva o estado no localStorage
-    const isMinimized = sidebar.classList.contains('minimized');
-    localStorage.setItem('sidebarState', isMinimized ? 'minimized' : 'expanded');
+            // Inicializar interações após carregar o menu
+            initializeSidebar();
+        })
+        .catch(error => console.error("Erro ao carregar o menu:", error));
 });
+function initializeSidebar() {
+    const toggleSidebarButton = document.getElementById("toggleSidebar");
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("mainContent");
 
-// Aplica o estado salvo ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    const savedState = localStorage.getItem('sidebarState');
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('mainContent');
+    if (toggleSidebarButton) {
+        toggleSidebarButton.addEventListener("click", () => {
+            sidebar.classList.toggle("expanded");
+            sidebar.classList.toggle("minimized");
+            mainContent.classList.toggle("minimized");
 
-    if (savedState === 'minimized') {
-        sidebar.classList.add('minimized');
-        sidebar.classList.remove('expanded');
-        mainContent.classList.add('minimized');
-    } else {
-        sidebar.classList.add('expanded');
-        sidebar.classList.remove('minimized');
-        mainContent.classList.remove('minimized');
+            const isMinimized = sidebar.classList.contains("minimized");
+            localStorage.setItem("sidebarState", isMinimized ? "minimized" : "expanded");
+        });
     }
-});
+
+    const savedState = localStorage.getItem("sidebarState");
+    if (savedState === "minimized") {
+        sidebar.classList.add("minimized");
+        sidebar.classList.remove("expanded");
+        mainContent.classList.add("minimized");
+    } else {
+        sidebar.classList.add("expanded");
+        sidebar.classList.remove("minimized");
+        mainContent.classList.remove("minimized");
+    }
+}
 
 
 // Load Data
