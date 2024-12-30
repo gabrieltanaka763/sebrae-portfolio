@@ -15,7 +15,7 @@ const fixedColors = [
     '#e74a3b', // Vermelho
     '#858796', // Cinza
     '#5a5c69', // Cinza Escuro
-    '#ff9f40', // Laranja
+    '#ff9f40', // Laranjaa
     '#71c9ce', // Verde Água
     '#a29bfe'  // Roxo Claro
 ];
